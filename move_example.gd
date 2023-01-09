@@ -10,9 +10,7 @@ func _get_move_speed():
 
 func move():
 	var motion = (-transform.basis.z * _get_move_input()) * _get_move_speed()
-	var snap = Vector3.DOWN
 	if is_on_floor():
 		motion = (motion - get_floor_normal() * motion.dot(get_floor_normal())).normalized() * motion.length();
-		snap = get_floor_normal() 
 
 	move_and_slide_with_snap(motion, Vector3.DOWN, Vector3.UP, true)
